@@ -1,7 +1,8 @@
 package com.learn.learn.controller;
 
 import com.learn.learn.model.Student;
-import com.learn.learn.repository.StudentRepository;
+import com.learn.learn.service.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,14 +13,15 @@ import java.util.List;
 @RequestMapping("/api/v1/student")
 public class StudentController {
 
-    private final StudentRepository studentRepository;
+    private final StudentService studentService;
 
-    public StudentController(StudentRepository studentRepository) {
-        this.studentRepository = studentRepository;
+    @Autowired
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
     }
 
     @GetMapping()
     public List<Student> getStudents() {
-        return this.studentRepository.findAll();
+        return this.studentService.findAll();
     }
 }
