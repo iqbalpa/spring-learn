@@ -38,4 +38,10 @@ public class StudentService {
         student.setAge(studentRequest.getAge());
         return studentRepository.save(student);
     }
+
+    public Student delete(Integer id) {
+        Student student = this.studentRepository.findById(id).get();
+        this.studentRepository.delete(student);
+        return student;
+    }
 }
