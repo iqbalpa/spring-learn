@@ -33,4 +33,9 @@ public class StudentController {
     public Student addStudent(@RequestBody StudentRequest studentRequest) {
         return this.studentService.create(studentRequest);
     }
+
+    @PutMapping("{id}")
+    public Student updateStudent(@PathVariable("id") int id, @RequestBody StudentRequest studentRequest) {
+        return this.studentService.update(id, studentRequest);
+    }
 }
