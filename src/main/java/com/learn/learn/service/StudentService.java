@@ -21,6 +21,10 @@ public class StudentService {
         return this.studentRepository.findAll();
     }
 
+    public Student findById(int id) {
+        return this.studentRepository.findById(id).get();
+    }
+
     public Student create(StudentRequest studentRequest) {
         Student student = new Student();
         student.setName(studentRequest.getName());
