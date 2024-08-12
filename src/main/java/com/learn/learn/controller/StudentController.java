@@ -1,11 +1,10 @@
 package com.learn.learn.controller;
 
+import com.learn.learn.dto.StudentRequest;
 import com.learn.learn.model.Student;
 import com.learn.learn.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,5 +22,10 @@ public class StudentController {
     @GetMapping()
     public List<Student> getStudents() {
         return this.studentService.findAll();
+    }
+
+    @PostMapping()
+    public Student addStudent(@RequestBody StudentRequest studentRequest) {
+        return this.studentService.create(studentRequest);
     }
 }
